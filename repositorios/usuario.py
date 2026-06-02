@@ -1,7 +1,7 @@
 from configuracoes.database import conectar
 from  interfaces.abstrata_usuario import Abstrata_Usuario
 
-class repositoriosql(Abstrata_Usuario):
+class Repositoriosql(Abstrata_Usuario):
     def __init__(self):
         self.conexao = conectar()
         self.cursor = self.conexao.cursor()
@@ -26,3 +26,10 @@ class repositoriosql(Abstrata_Usuario):
         if len(usuarios) == 0:
             print("Nenhum usuário cadastrado")
             return
+        
+        for idusuario,nome,email,telefone in usuarios:
+            print(f"ID: {idusuario} | Nome: {nome} | Email: {email} | Telefone: {telefone}")
+        
+    def atualizar_usuario(self, idusuario, nome, email, telefone, cpf):
+      pass
+       
