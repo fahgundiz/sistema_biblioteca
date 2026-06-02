@@ -6,19 +6,19 @@ class Sistema:
     def menu(self):
         while True:
             print("="*50)
-            print("=== MENU SISTEMA  ===")
+            print("=== MENU SISTEMA ===")
             print("")
-            print("1 - Cadastrar cliente")
-            print("2 - Listar clientes")
-            print("3 - Atualizar cliente")
-            print("4 - Deletar cliente")
-            print("5 - Cadastrar Médico")
-            print("6 - Listar Médicos")
-            print("7 - Atualizar Médico")
-            print("8 - Deletar Médico")
-            print("9 - Criar consulta")
-            print("10 - Listar consultas")
-            print("11 - Excluir uma consulta")
+            print("1 - Cadastrar usuário")
+            print("2 - Listar usuários")
+            print("3 - Atualizar usuário")
+            print("4 - Deletar usuário")
+            print("5 - Cadastrar livro")
+            print("6 - Listar livros")
+            print("7 - Atualizar livro")
+            print("8 - Deletar livro")
+            print("9 - Realizar emprestimo livro")
+            print("10 - Realizar devolução livro")
+            print("11 - Cancelar emprestimo livro")
             print("0 - Sair")
 
             opcao = input("Escolha uma opção: ").strip()
@@ -30,5 +30,60 @@ class Sistema:
                         pass
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                case "2":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "3":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "4":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "5":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "6":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "7":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "8":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "9":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "10":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case "11":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
+                case '0':
+                    print("Saindo do programa...")
+                    break
                 case __:
                     print("opção inválida, digite novamente")
+
+
