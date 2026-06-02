@@ -4,19 +4,10 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema sistema_biblioteca_banco
--- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema sistema_biblioteca_banco
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `sistema_biblioteca_banco` DEFAULT CHARACTER SET utf8 ;
 USE `sistema_biblioteca_banco` ;
 
--- -----------------------------------------------------
--- Table `sistema_biblioteca_banco`.`usuario`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
@@ -24,15 +15,11 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario` (
   `telefone` VARCHAR(20) NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
   PRIMARY KEY (`idusuario`),
-  UNIQUE INDEX `telefone_UNIQUE` (`telefone` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) VISIBLE)
+  UNIQUE INDEX `telefone_UNIQUE` (`telefone` ASC),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) )
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `sistema_biblioteca_banco`.`livro`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`livro` (
   `idlivro` INT NOT NULL AUTO_INCREMENT,
   `isbn` VARCHAR(13) NOT NULL,
@@ -42,20 +29,19 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`livro` (
   `ano_publicacao` INT NOT NULL,
   `quant_disponivel` INT NOT NULL,
   PRIMARY KEY (`idlivro`),
-  UNIQUE INDEX `isbn_UNIQUE` (`isbn` ASC) VISIBLE,
-  UNIQUE INDEX `titulo_UNIQUE` (`titulo` ASC) VISIBLE)
+  UNIQUE INDEX `isbn_UNIQUE` (`isbn` ASC),
+  UNIQUE INDEX `titulo_UNIQUE` (`titulo` ASC))
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `sistema_biblioteca_banco`.`usuario_has_livro`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario_has_livro` (
   `usuario_idusuario` INT NOT NULL,
   `livro_idlivro` INT NOT NULL,
+  `data_emprestimo` DATE NOT NULL,
+  `data_devolucao` DATE NOT NULL,
   PRIMARY KEY (`usuario_idusuario`, `livro_idlivro`),
-  INDEX `fk_usuario_has_livro_livro1_idx` (`livro_idlivro` ASC) VISIBLE,
-  INDEX `fk_usuario_has_livro_usuario_idx` (`usuario_idusuario` ASC) VISIBLE,
+  INDEX `fk_usuario_has_livro_livro1_idx` (`livro_idlivro` ASC),
+  INDEX `fk_usuario_has_livro_usuario_idx` (`usuario_idusuario` ASC),
   CONSTRAINT `fk_usuario_has_livro_usuario`
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `sistema_biblioteca_banco`.`usuario` (`idusuario`)
