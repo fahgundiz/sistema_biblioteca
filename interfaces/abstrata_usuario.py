@@ -26,10 +26,12 @@ class Abstrata_Usuario(ABC):
         Método abstrato para listar todos os usuários
         Sem parametros
         """
+        pass
     
     @abstractmethod
-    def atualizar_usuario(self,idusuario, nome, email, telefone, cpf):
+    def atualizar_usuario(self, idusuario, nome, email, telefone, cpf):
         """
         Método abstrato para atualizar um usuário através do seu ID.
         Parametros: idusuario(INT), nome(string), email(string), telefone(string), cpf(string)
         """
+        pass
