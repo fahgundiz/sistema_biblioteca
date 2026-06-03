@@ -45,7 +45,7 @@ class Repositoriosql(Abstrata_Usuario):
            cpf = %s
        WHERE idconvidado = %s
        """
-
+##teste02
        valores = (
            novo_nome,
            novo_email,
@@ -53,3 +53,34 @@ class Repositoriosql(Abstrata_Usuario):
            novo_cpf,
            idusuario
        )
+       
+       self.cursor.execute(
+           sql,
+           valores
+       )
+
+       self.conexao.commit()
+##teste002
+       if self.cursor.rowcount > 0:
+           print("usuário atualizado com sucesso")
+       else:
+           print("usuário não encontrado")
+    def deletar_usuario(self, idusuario):
+        sql = """
+        DELETE FROM usuario
+        WHERE idusuario = %s
+        """
+
+        valores = (idusuario,)
+
+        self.cursor.execute(
+            sql,
+            valores
+        )
+
+        self.conexao.commit()
+
+        if self.cursor.rowcount > 0:
+            print("usuário deletado com sucesso")
+        else:
+            print("usuário não encontrado")
