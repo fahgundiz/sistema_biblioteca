@@ -29,3 +29,9 @@ class Repositoriosql(Abstrata_Usuario):
         
         for idusuario,nome,email,telefone in usuarios:
             print(f"ID: {idusuario} | Nome: {nome} | Email: {email} | Telefone: {telefone}")
+    
+    def atualizar_usuario(self, idusuario, nome, email, telefone, cpf):
+        pass
+
+    def deletar_usuario(self, idusuario):
+        pass

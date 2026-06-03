@@ -1,7 +1,8 @@
+from repositorios.usuario import *
 
 class Sistema:
-    def __init__(self):
-        pass
+    def __init__(self, usuario:Repositoriosql):
+        self.usuario = usuario
     
     def menu(self):
         while True:
@@ -27,12 +28,18 @@ class Sistema:
 
                 case "1":
                     try:
-                        pass
+                        # nome,email,telefone,cpf
+                        nome = input("Digite o nome do usuário: ")
+                        email = input("Digite o email: ")
+                        telefone = input("Digite o telefone: ")
+                        cpf = input("Digite o cpf: ")
+
+                        self.usuario.criar_usuario(nome,email,telefone,cpf)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "2":
                     try:
-                        pass
+                        self.usuario.listar_usuarios()
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "3":
