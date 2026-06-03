@@ -66,4 +66,21 @@ class Repositoriosql(Abstrata_Usuario):
        else:
            print("usuário não encontrado")
     def deletar_usuario(self, idusuario):
-        pass
+        sql = """
+        DELETE FROM usuario
+        WHERE idusuario = %s
+        """
+
+        valores = (idusuario,)
+
+        self.cursor.execute(
+            sql,
+            valores
+        )
+
+        self.conexao.commit()
+
+        if self.cursor.rowcount > 0:
+            print("usuário deletado com sucesso")
+        else:
+            print("usuário não encontrado")
