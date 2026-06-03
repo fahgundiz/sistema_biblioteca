@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 class Abstrata_Livro(ABC): 
     
     @abstractmethod
-    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn):
+    def criar_livro(self, novo_titulo, novo_autor, editora, ano_publicacao, isbn):
         """
         Método abstrato para criar um livro. 
         Parâmetros: 
@@ -33,7 +33,7 @@ class Abstrata_Livro(ABC):
         pass 
 
     @abstractmethod
-    def atualizar_livro(self, idlivro, titulo, autor, editora, ano_publicacao, isbn):
+    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, editora, ano_publicacao, isbn):
         """
         Método abstrato para atualizar um livro através do seu ID. 
         Parâmetros: 
