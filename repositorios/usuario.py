@@ -45,7 +45,7 @@ class Repositoriosql(Abstrata_Usuario):
            cpf = %s
        WHERE idconvidado = %s
        """
-
+##teste02
        valores = (
            novo_nome,
            novo_email,
