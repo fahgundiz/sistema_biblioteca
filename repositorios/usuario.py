@@ -60,7 +60,7 @@ class Repositoriosql(Abstrata_Usuario):
        )
 
        self.conexao.commit()
-##teste
+##teste002
        if self.cursor.rowcount > 0:
            print("usuário atualizado com sucesso")
        else:
