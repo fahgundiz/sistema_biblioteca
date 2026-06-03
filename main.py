@@ -1,7 +1,7 @@
 from servicos.menu import *
 
 
-usuario = Repositoriosql()
+usuario = Repositoriosqlusuario()
 sistema = Sistema(usuario)
 
 sistema.menu()
