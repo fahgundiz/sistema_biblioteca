@@ -1,8 +1,8 @@
-# Sistema de Gestão de Consultas médicas – Python e Banco de Dados 
+# Sistema de Gestão de Biblioteca – Python, POO e Banco de Dados 
 
 ## Introdução
 ### O que é
-Sistema que simula uma gestão de uma clínica médica utilizando Python, POO e MySQL.
+Sistema que simula uma gestão de uma biblioteca utilizando Python, POO e MySQL.
 O sistema permite um CRUD simples para pacientes, médicos e consultas
 
 
