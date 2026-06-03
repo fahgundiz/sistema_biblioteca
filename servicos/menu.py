@@ -3,7 +3,7 @@ from repositorios.usuario import *
 class Sistema:
     def __init__(self, usuario:Repositoriosql):
         self.usuario = usuario
-    
+    #teste
     def menu(self):
         while True:
             print("="*50)
