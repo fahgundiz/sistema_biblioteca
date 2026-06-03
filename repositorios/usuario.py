@@ -1,7 +1,7 @@
 from configuracoes.database import conectar
 from  interfaces.abstrata_usuario import Abstrata_Usuario
 
-class Repositoriosql(Abstrata_Usuario):
+class Repositoriosqlusuario(Abstrata_Usuario):
     def __init__(self):
         self.conexao = conectar()
         self.cursor = self.conexao.cursor()
