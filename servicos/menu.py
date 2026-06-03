@@ -1,7 +1,7 @@
 from repositorios.usuario import *
 
 class Sistema:
-    def __init__(self, usuario:Repositoriosql):
+    def __init__(self, usuario:Repositoriosqlusuario):
         self.usuario = usuario
     #teste
     def menu(self):
