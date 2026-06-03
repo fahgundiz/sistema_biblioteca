@@ -30,6 +30,26 @@ class Repositoriosql(Abstrata_Usuario):
         for idusuario,nome,email,telefone in usuarios:
             print(f"ID: {idusuario} | Nome: {nome} | Email: {email} | Telefone: {telefone}")
         
-    def atualizar_usuario(self, idusuario, nome, email, telefone, cpf):
-      pass
-       
+    def atualizar_usuario(self,
+                           idusuario, 
+                           novo_nome,
+                           novo_email, 
+                           novo_telefone, 
+                           novo_cpf
+    ):
+       sql = """
+       UPDATE convidado
+       SET nome = %s,
+           email = %s,
+           telefone = %s,
+           cpf = %s
+       WHERE idconvidado = %s
+       """
+
+       valores = (
+           novo_nome,
+           novo_email,
+           novo_telefone,
+           novo_cpf,
+           idusuario
+       )
