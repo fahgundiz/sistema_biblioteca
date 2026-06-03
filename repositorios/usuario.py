@@ -38,12 +38,12 @@ class Repositoriosqlusuario(Abstrata_Usuario):
                            novo_cpf
     ):
        sql = """
-       UPDATE convidado
+       UPDATE usuario
        SET nome = %s,
            email = %s,
            telefone = %s,
            cpf = %s
-       WHERE idconvidado = %s
+       WHERE idusuario = %s
        """
 ##teste02
        valores = (
