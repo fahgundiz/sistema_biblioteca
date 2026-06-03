@@ -3,19 +3,19 @@
 ## Introdução
 ### O que é
 Sistema que simula uma gestão de uma biblioteca utilizando Python, POO e MySQL.
-O sistema permite um CRUD simples para pacientes, médicos e consultas
+O sistema permite um CRUD simples para livro, usuario e livro_usuario.
 
 
 ## Funcionalidades
 
 ### Módulos de Aprendizado
-. Comandos SQL: Utilizar comandos do tipo SELECT para mostrar pacientes, médicos e consultas<br>
-. Comandos SQL: Utilizar comandos do tipo INSERT para criar um paciente, médico ou consulta<br>
-. Comandos SQL: Utilizar comandos do tipo UPDATE para atualizar o registro de um paciente, médico ou consulta<br>
-. Comandos SQL: Utilizar comandos do tipo DELTE para DELETAR um registro de paciente, médico ou consulta<br>
+. Comandos SQL: Utilizar comandos do tipo SELECT para mostrar livros, usuários e empréstimo<br>
+. Comandos SQL: Utilizar comandos do tipo INSERT para criar um livro, usuário e empréstimo<br>
+. Comandos SQL: Utilizar comandos do tipo UPDATE para atualizar o registro de um livro, usuário e empréstimo<br>
+. Comandos SQL: Utilizar comandos do tipo DELETE para DELETAR um registro de livro, usuário e empréstimo<br>
 . Menu interativo: Utilizar um menu para acessar cada função específica<br>
 . Menu interativo: Utilizar um menu para acessar cada função específica<br>
-. POO: Utilizar POO para definir classes, métodos e atributos para pacientes, médicos e consultas<br>
+. POO: Utilizar POO para definir classes, métodos e atributos para livro, usuário e empréstimo<br>
 
 ## Pré-requisitos
 
@@ -27,8 +27,8 @@ O sistema permite um CRUD simples para pacientes, médicos e consultas
 
 ### Clonar o repositório:
 
-git clone https://github.com/fahgundiz/sistema_consultas_medicas<br>
-cd sistema_consultas_medicas
+git clone https://github.com/fahgundiz/sistema_biblioteca<br>
+cd sistema_biblioteca
 
 ### Instalar dependências:
 
