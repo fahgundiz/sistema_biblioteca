@@ -53,3 +53,17 @@ class Repositoriosql(Abstrata_Usuario):
            novo_cpf,
            idusuario
        )
+       
+       self.cursor.execute(
+           sql,
+           valores
+       )
+
+       self.conexao.commit()
+
+       if self.cursor.rowcount > 0:
+           print("usuário atualizado com sucesso")
+       else:
+           print("usuário não encontrado")
+    def deletar_usuario(self, idusuario):
+        pass
