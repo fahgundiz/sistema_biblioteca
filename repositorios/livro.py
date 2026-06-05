@@ -8,7 +8,7 @@ class Repositoriosqlivro(Abstrata_Livro):
 
     def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn):
        sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn)
-       VALUE (%s,%s,%s,%s,%s)
+       VALUES (%s,%s,%s,%s,%s)
        """
        valores = (titulo,autor,editora,ano_publicacao,isbn)
 
