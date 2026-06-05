@@ -44,12 +44,24 @@ class Sistema:
                         print(f"Erro: {erro}")
                 case "3":
                     try:
-                        pass
+                        idusuario = int(input("Digite o ID do usuário para atualizar: "))
+                        novo_nome = input("Digite o novo nome: ")
+                        novo_email = input("Digite o novo e-mail: ")
+                        novo_telefone = input("Digite o novo telefone: ")
+                        novo_cpf = input("Digite o novo cpf: ")
+
+                        self.usuario.atualizar_usuario(idusuario, 
+                           novo_nome,
+                           novo_email, 
+                           novo_telefone, 
+                           novo_cpf)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "4":
                     try:
-                        pass
+                        idusuario = int(input("Digite o ID do usuário para deletar: "))
+
+                        self.usuario.deletar_usuario(idusuario)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "5":
