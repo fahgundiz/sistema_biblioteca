@@ -1,7 +1,7 @@
 from configuracoes.database import conectar
 from interfaces.abstrata_emprestimo import Abstrata_Emprestimo
 
-class Repositoriosqlivro(Abstrata_Emprestimo):
+class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
     def __init__(self):
       self.conexao = conectar()
       self.cursor = self.conexao.cursor()
@@ -50,19 +50,20 @@ class Repositoriosqlivro(Abstrata_Emprestimo):
        else:
           print("Empréstimo não encontrado")
     
-    def deletar_livro(self, idusuario, idlivro):
-       sql = """
+    def deletar_emprestimo(self, idusuario, idlivro):
+        pass
+        sql = """
        DELETE FROM usuario_has_livro
        WHERE livro_idlivro = %s and usuario_id_usuario = %s
        """
 
-       valores = (idusuario,idlivro)
+        valores = (idusuario,idlivro)
 
-       self.cursor.execute(sql,valores)
+        self.cursor.execute(sql,valores)
 
-       self.conexao.commit()
+        self.conexao.commit()
 
-       if self.cursor.rowcount > 0:
-         print("Empréstimo deletado com sucesso!")
-       else:
-          print("Empréstimo não encontrado")
+        if self.cursor.rowcount > 0:
+            print("Empréstimo deletado com sucesso!")
+        else:
+            print("Empréstimo não encontrado")

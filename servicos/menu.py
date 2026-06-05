@@ -1,8 +1,10 @@
 from repositorios.usuario import *
-
+from repositorios.emprestimo import RepositoriosqlEmprestimo
+from datetime import datetime
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario):
+    def __init__(self, usuario:Repositoriosqlusuario, emprestimo:RepositoriosqlEmprestimo):
         self.usuario = usuario
+        self.emprestimo = emprestimo
     #teste
     def menu(self):
         while True:
@@ -87,7 +89,20 @@ class Sistema:
                         print(f"Erro: {erro}")
                 case "9":
                     try:
-                        pass
+                        idusuario = int(input("Digite o ID do usuário: "))
+                        idlivro = int(input("Digite o ID do livro: "))
+                        data_emprestimo_str = input("Digite a data de emprestimo(YYYY-MM-DD): ")
+                        data_devolucao_str = input("Digite a data de devolução(YYYY-MM-DD): ")
+
+                        #Converter string para date time
+                        data_emprestimo = datetime.strptime(data_emprestimo_str, "%Y-%m-%d")
+                        data_devolucao = datetime.strptime(data_devolucao_str, "%Y-%m-%d")
+
+                        #Bota apenas a data (tira a hora)
+                        data_emprestimo_date = data_emprestimo.date()
+                        data_devolucao_date = data_devolucao.date()
+                        
+                        self.emprestimo.criar_emprestimo(idusuario, idlivro, data_emprestimo_date, data_devolucao_date)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "10":
