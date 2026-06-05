@@ -1,8 +1,10 @@
 from repositorios.usuario import *
+from repositorios.livro import *
 
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario):
+    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro):
         self.usuario = usuario
+        self.livro = livro
     #teste
     def menu(self):
         while True:
@@ -67,7 +69,32 @@ class Sistema:
                         print(f"Erro: {erro}")
                 case "5":
                     try:
-                        pass
+                      titulo = input("Título: ")
+                      if len(titulo) >= 1:
+                          pass
+                      else:
+                          raise ValueError("Erro: Tamanho de título inválido")
+                      autor = input("Autor: ")
+                      if autor.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
+                          raise ValueError("Erro: Valor de autor inváldio")
+                      editora = input("Editora: ")
+                      if editora.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
+                          raise ValueError("Erro: Valor de editora inválido")
+                      ano_publicacao = int(input("Ano de publicação: "))
+                      if ano_publicacao > 0 and ano_publicacao <= 2026:
+                          pass
+                      else:
+                          raise ValueError("Erro: Ano inválido")
+                      isbn = input("ISBN: ")
+                      if len(isbn) >= 10 and isbn.isdigit() and len(isbn) <= 13:
+                          pass
+                      else:
+                          raise ValueError("Erro: Tamanho inválido, digite 13 números")
+                      try:
+                       quantidade_disponivel = int(input("Quantidade disponível: "))
+                      except ValueError:
+                          print("Erro: Quantidade inválida")
+                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "6":
@@ -105,5 +132,4 @@ class Sistema:
                     break
                 case __:
                     print("opção inválida, digite novamente")
-
 

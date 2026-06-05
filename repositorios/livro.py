@@ -6,11 +6,11 @@ class Repositoriosqlivro(Abstrata_Livro):
       self.conexao = conectar()
       self.cursor = self.conexao.cursor()
 
-    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn):
-       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn)
-       VALUE (%s,%s,%s,%s,%s)
+    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,quantidade_disponivel):
+       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn,quant_disponivel)
+       VALUES (%s,%s,%s,%s,%s,%s)
        """
-       valores = (titulo,autor,editora,ano_publicacao,isbn)
+       valores = (titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
@@ -18,7 +18,7 @@ class Repositoriosqlivro(Abstrata_Livro):
        print(f"Livro {titulo} criado com sucesso")
 
     def listar_livros(self):
-       sql = "SELECT idlivro,titulo,autor,editora,ano_publicacao,isbn"
+       sql = "SELECT FROM idlivro,titulo,autor,editora,ano_publicacao,isbn,quant_disponivel"
 
        self.cursor.execute(sql)
        livros = self.cursor.fetchall()
@@ -27,21 +27,22 @@ class Repositoriosqlivro(Abstrata_Livro):
           print("Nenhum livro encontrado")
           return
        else:
-          for idlivro,titulo,autor,editora,ano_publicacao,isbn in livros:
-             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}")
+          for idlivro,titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel in livros:
+             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Quantidade disponível: {quantidade_disponivel}")
 
-    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn):
+    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn,nova_quantidade_disponivel):
        sql = """
     UPDATE livro 
     SET titulo = %s,
         autor = %s,
         editora = %s,
         ano_publicacao = %s,
-        isbn = %s
+        isbn = %s,
+        quant_disponivel = %s
     WHERE idlivro = %s
     """
        
-       valores = (novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,novo_isbn,idlivro)
+       valores = (novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,novo_isbn,nova_quantidade_disponivel,idlivro)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
