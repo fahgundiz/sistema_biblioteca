@@ -62,7 +62,7 @@ class Sistema:
                         idusuario = int(input("Digite o ID do usuário para deletar: "))
 
                         self.usuario.deletar_usuario(idusuario)
-                        #
+                        ##
                     except Exception as erro:
                         print(f"Erro: {erro}")
                 case "5":
