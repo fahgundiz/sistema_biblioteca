@@ -33,7 +33,7 @@ class Abstrata_Livro(ABC):
         pass 
 
     @abstractmethod
-    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, editora, ano_publicacao, isbn):
+    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn):
         """
         Método abstrato para atualizar um livro através do seu ID. 
         Parâmetros: 
