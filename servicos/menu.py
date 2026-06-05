@@ -1,14 +1,11 @@
 from repositorios.usuario import *
-<<<<<<< HEAD
-# Certifique-se de importar o repositório de livros também:
-# from repositorios.livro import Repositoriosqllivro 
 
 class Sistema:
     def __init__(self, usuario: Repositoriosqlusuario, livro): 
         self.usuario = usuario
         self.livro = livro  # Adicionado para corrigir o erro nos casos 7 e 8
 
-=======
+
 from repositorios.livro import *
 
 class Sistema:
@@ -16,7 +13,7 @@ class Sistema:
         self.usuario = usuario
         self.livro = livro
     #teste
->>>>>>> 9b142f8ddfe9ae6294dca2bb19e80f3530734d63
+
     def menu(self):
         while True:
             print("="*50)
@@ -170,7 +167,3 @@ class Sistema:
                     
                 case __:
                     print("opção inválida, digite novamente")
-<<<<<<< HEAD
-=======
-
->>>>>>> 9b142f8ddfe9ae6294dca2bb19e80f3530734d63
