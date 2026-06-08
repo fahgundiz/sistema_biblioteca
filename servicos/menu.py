@@ -25,6 +25,7 @@ class Sistema:
             print("9 - Realizar emprestimo livro")
             print("10 - Realizar devolução livro")
             print("11 - Cancelar emprestimo livro")
+            print("12 - Listar emprestimos")
             print("0 - Sair")
             
             opcao = input("Escolha uma opção: ").strip()
