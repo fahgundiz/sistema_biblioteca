@@ -28,7 +28,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           return
        else:
           for usuario_idusuario, livro_idlivro, data_emprestimo, data_devolucao in emprestimos:
-             print(f"ID usuário: {usuario_idusuario}, ID livro: {livro_idlivro}, data empréstimo: {data_emprestimo}, data devolução: {data_devolucao}")
+             print(f"ID usuário: {usuario_idusuario}, ID livro: {livro_idlivro}, data empréstimo: {data_emprestimo}, data devolução: {data_devolucao}\n")
 
     def atualizar_emprestimo(self, idusuario, idlivro, nova_data_emprestimo, nova_data_devolucao, novo_id_usuario, novo_id_livro):
        sql = """
@@ -50,7 +50,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
        else:
           print("Empréstimo não encontrado")
     
-    def deletar_emprestimo(self, idusuario, idlivro):
+    def cancelar_emprestimo(self, idusuario, idlivro):##Mudar quantidade de livro, se usuario não quiser mais o livro, após ter feito um emprestimo
         pass
         sql = """
        DELETE FROM usuario_has_livro
@@ -67,3 +67,6 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
             print("Empréstimo deletado com sucesso!")
         else:
             print("Empréstimo não encontrado")
+
+    def fazer_devolucao():##Muda a quantidade de livro, quando o cliente devolver o livro antes da data, permitindo atualizar a quantidade de livro
+       pass
