@@ -1,10 +1,12 @@
 from repositorios.usuario import *
-from repositorios.emprestimo import RepositoriosqlEmprestimo
-from datetime import datetime
+from repositorios.livro import *
+
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario):
+    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro):
         self.usuario = usuario
+        self.livro = livro
     #teste
+
     def menu(self):
         while True:
             print("="*50)
@@ -22,27 +24,27 @@ class Sistema:
             print("10 - Realizar devolução livro")
             print("11 - Cancelar emprestimo livro")
             print("0 - Sair")
-
+            
             opcao = input("Escolha uma opção: ").strip()
             print("="*50)
+            
             match opcao:
-
                 case "1":
                     try:
-                        # nome,email,telefone,cpf
                         nome = input("Digite o nome do usuário: ")
                         email = input("Digite o email: ")
                         telefone = input("Digite o telefone: ")
                         cpf = input("Digite o cpf: ")
-
-                        self.usuario.criar_usuario(nome,email,telefone,cpf)
+                        self.usuario.criar_usuario(nome, email, telefone, cpf)
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "2":
                     try:
                         self.usuario.listar_usuarios()
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "3":
                     try:
                         idusuario = int(input("Digite o ID do usuário para atualizar: "))
@@ -58,34 +60,82 @@ class Sistema:
                            novo_cpf)
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "4":
                     try:
                         idusuario = int(input("Digite o ID do usuário para deletar: "))
 
                         self.usuario.deletar_usuario(idusuario)
-                        #
+                        ##
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "5":
                     try:
-                        pass
+                      titulo = input("Título: ")
+                      if len(titulo) >= 1:
+                          pass
+                      else:
+                          raise ValueError("Erro: Tamanho de título inválido")
+                      autor = input("Autor: ")
+                      if autor.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
+                          raise ValueError("Erro: Valor de autor inváldio")
+                      editora = input("Editora: ")
+                      if editora.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
+                          raise ValueError("Erro: Valor de editora inválido")
+                      ano_publicacao = int(input("Ano de publicação: "))
+                      if ano_publicacao > 0 and ano_publicacao <= 2026:
+                          pass
+                      else:
+                          raise ValueError("Erro: Ano inválido")
+                      isbn = input("ISBN: ")
+                      if len(isbn) >= 10 and isbn.isdigit() and len(isbn) <= 13:
+                          pass
+                      else:
+                          raise ValueError("Erro: Tamanho inválido, digite 13 números")
+                      try:
+                       quantidade_disponivel = int(input("Quantidade disponível: "))
+                      except ValueError:
+                          print("Erro: Quantidade inválida")
+                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "6":
                     try:
                         pass
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "7":
                     try:
-                        pass
+                        idlivro = int(input("Digite o ID do livro que você deseja atualizar: "))
+                        novo_titulo = input("Digite o novo título: ")
+                        novo_autor = input("Digite o novo nome do autor: ")
+                        nova_editora = input("Digite a nova editora: ")
+                        novo_ano_de_identificacao = int(input("Digite o novo ano de identificação: "))
+                        novo_isbn = input("Digite o novo ISBN: ")
+                        
+                        self.livro.atualizar_livro(
+                            idlivro, novo_titulo, novo_autor, 
+                            nova_editora, novo_ano_de_identificacao, novo_isbn
+                        )
+                        print("Livro atualizado com sucesso!")
+                    except ValueError:
+                        print("Erro: Digite um número válido para o ID e o Ano.")
                     except Exception as erro:
-                        print(f"Erro: {erro}")
+                        print(f"Erro inesperado: {erro}")
+                        
                 case "8":
                     try:
-                        pass
+                        idlivro = int(input("Digite o ID do livro que deseja deletar: "))
+                        self.livro.deletar_livro(idlivro)
+                        print("Livro deletado com sucesso!")
+                    except ValueError:
+                        print("Erro: O ID deve ser um número inteiro.")
                     except Exception as erro:
-                        print(f"Erro: {erro}")
+                        print(f"Erro inesperado: {erro}")
+                        
                 case "9":
                     try:
                         idusuario = int(input("Digite o ID do usuário: "))
@@ -104,20 +154,22 @@ class Sistema:
                         self.emprestimo.criar_emprestimo(idusuario, idlivro, data_emprestimo_date, data_devolucao_date)
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "10":
                     try:
                         pass
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "11":
                     try:
                         pass
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case '0':
                     print("Saindo do programa...")
                     break
+                    
                 case __:
                     print("opção inválida, digite novamente")
-
-

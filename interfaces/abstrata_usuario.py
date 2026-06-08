@@ -29,7 +29,7 @@ class Abstrata_Usuario(ABC):
         pass
     
     @abstractmethod
-    def atualizar_usuario(self, idusuario, nome, email, telefone, cpf):
+    def atualizar_usuario(self, idusuario, novo_nome, novo_email, novo_telefone, novo_cpf):
         """
         Método abstrato para atualizar um usuário através do seu ID.
         Parametros: idusuario(INT), nome(string), email(string), telefone(string), cpf(string)
