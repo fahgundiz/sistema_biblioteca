@@ -51,10 +51,9 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           print("Empréstimo não encontrado")
     
     def cancelar_emprestimo(self, idusuario, idlivro):##Mudar quantidade de livro, se usuario não quiser mais o livro, após ter feito um emprestimo
-        pass
         sql = """
        DELETE FROM usuario_has_livro
-       WHERE livro_idlivro = %s and usuario_id_usuario = %s
+       WHERE livro_idlivro = %s and usuario_idusuario = %s
        """
 
         valores = (idusuario,idlivro)
