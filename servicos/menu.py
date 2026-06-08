@@ -23,7 +23,7 @@ class Sistema:
             print("7 - Atualizar livro")
             print("8 - Deletar livro")
             print("9 - Realizar emprestimo livro")
-            print("10 - Cancelar emprestimo livro")
+            print("10 - Cancelar emprestimo")
             print("11 - Listar emprestimos")
             print("0 - Sair")
             
@@ -156,20 +156,16 @@ class Sistema:
                         
                 case "10":
                     try:
-                        pass
+                        id_livro = int(input("ID do livro: "))
+                        id_usuario = int(input("ID do usuário: "))
+                        self.emprestimo.cancelar_emprestimo(id_livro,id_usuario)
+                        print("Emprestimo cancelado")
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
                 case "11":
                     try:
-                        pass
-                    except Exception as erro:
-                        print(f"Erro: {erro}")
-                
-                case "12":
-                    
-                    try:
-                        pass
+                        
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         

@@ -15,7 +15,7 @@ class Abstrata_Emprestimo(ABC):
         pass 
 
     @abstractmethod
-    def deletar_emprestimo(self, idusuario, idlivro):
+    def cancelar_emprestimo(self, idusuario, idlivro):
         """
         Método abstrato para deletar um empréstimo através do ID do usuário e livro. 
         Parâmetros: 
