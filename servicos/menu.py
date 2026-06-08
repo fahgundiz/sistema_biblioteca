@@ -165,6 +165,12 @@ class Sistema:
                         pass
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                
+                case "12":
+                    try:
+                        pass
+                    except Exception as erro:
+                        print(f"Erro: {erro}")
                         
                 case '0':
                     print("Saindo do programa...")
