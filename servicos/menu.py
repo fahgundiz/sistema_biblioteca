@@ -23,9 +23,8 @@ class Sistema:
             print("7 - Atualizar livro")
             print("8 - Deletar livro")
             print("9 - Realizar emprestimo livro")
-            print("10 - Realizar devolução livro")
-            print("11 - Cancelar emprestimo livro")
-            print("12 - Listar emprestimos")
+            print("10 - Cancelar emprestimo livro")
+            print("11 - Listar emprestimos")
             print("0 - Sair")
             
             opcao = input("Escolha uma opção: ").strip()
@@ -168,6 +167,7 @@ class Sistema:
                         print(f"Erro: {erro}")
                 
                 case "12":
+                    
                     try:
                         pass
                     except Exception as erro:
