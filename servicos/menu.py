@@ -165,7 +165,7 @@ class Sistema:
                         
                 case "11":
                     try:
-                        
+                        self.emprestimo.listar_emprestimos()
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         ##commit final
