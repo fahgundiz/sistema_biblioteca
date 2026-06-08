@@ -3,6 +3,7 @@ from servicos.menu import *
 
 usuario = Repositoriosqlusuario()
 livro = Repositoriosqlivro()
-sistema = Sistema(usuario,livro)
+emprestimo = RepositoriosqlEmprestimo()
+sistema = Sistema(usuario,livro, emprestimo)
 
 sistema.menu()
