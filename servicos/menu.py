@@ -101,7 +101,7 @@ class Sistema:
                         #Bota apenas a data (tira a hora)
                         data_emprestimo_date = data_emprestimo.date()
                         data_devolucao_date = data_devolucao.date()
-                        
+                        #tentativa push
                         self.emprestimo.criar_emprestimo(idusuario, idlivro, data_emprestimo_date, data_devolucao_date)
                     except Exception as erro:
                         print(f"Erro: {erro}")
