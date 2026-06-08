@@ -1,11 +1,4 @@
 from repositorios.usuario import *
-
-class Sistema:
-    def __init__(self, usuario: Repositoriosqlusuario, livro): 
-        self.usuario = usuario
-        self.livro = livro  # Adicionado para corrigir o erro nos casos 7 e 8
-
-
 from repositorios.livro import *
 
 class Sistema:
