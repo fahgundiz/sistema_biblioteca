@@ -168,7 +168,7 @@ class Sistema:
                         self.emprestimo.listar_emprestimos()
                     except Exception as erro:
                         print(f"Erro: {erro}")
-                        
+                                            
                 case '0':
                     print("Saindo do programa...")
                     break
