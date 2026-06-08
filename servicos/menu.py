@@ -105,7 +105,7 @@ class Sistema:
                         
                 case "6":
                     try:
-                        pass
+                        self.livro.listar_livros()
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
@@ -115,14 +115,11 @@ class Sistema:
                         novo_titulo = input("Digite o novo título: ")
                         novo_autor = input("Digite o novo nome do autor: ")
                         nova_editora = input("Digite a nova editora: ")
-                        novo_ano_de_identificacao = int(input("Digite o novo ano de identificação: "))
-                        novo_isbn = input("Digite o novo ISBN: ")
+                        novo_ano_de_publicacao = int(input("Digite o novo ano de identificação: "))
+                        novo_isbn = int(input("Digite o novo ISBN: "))
+                        nova_quantidade_disponivel = int(input("Quantidade disponível:"))
                         
-                        self.livro.atualizar_livro(
-                            idlivro, novo_titulo, novo_autor, 
-                            nova_editora, novo_ano_de_identificacao, novo_isbn
-                        )
-                        print("Livro atualizado com sucesso!")
+                        self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)
                     except ValueError:
                         print("Erro: Digite um número válido para o ID e o Ano.")
                     except Exception as erro:
