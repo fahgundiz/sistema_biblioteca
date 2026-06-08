@@ -2,9 +2,8 @@ from repositorios.usuario import *
 from repositorios.emprestimo import RepositoriosqlEmprestimo
 from datetime import datetime
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario, emprestimo:RepositoriosqlEmprestimo):
+    def __init__(self, usuario:Repositoriosqlusuario):
         self.usuario = usuario
-        self.emprestimo = emprestimo
     #teste
     def menu(self):
         while True:
