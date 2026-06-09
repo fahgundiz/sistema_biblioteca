@@ -56,10 +56,16 @@ class Sistema:
                 case "3":
                     try:
                         idusuario = int(input("Digite o ID do usuário para atualizar: "))
+                        Usuario.validar_idusuario(idusuario)
                         novo_nome = input("Digite o novo nome: ")
+                        Usuario.validar_nome(novo_nome)
                         novo_email = input("Digite o novo e-mail: ")
+                        Usuario.validar_email(novo_email)
                         novo_telefone = input("Digite o novo telefone: ")
+                        Usuario.validar_telefone(novo_telefone)
                         novo_cpf = input("Digite o novo cpf: ")
+
+                        Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
 
                         self.usuario.atualizar_usuario(idusuario, 
                            novo_nome,
@@ -72,7 +78,7 @@ class Sistema:
                 case "4":
                     try:
                         idusuario = int(input("Digite o ID do usuário para deletar: "))
-
+                        Usuario.validar_idusuario(idusuario)
                         self.usuario.deletar_usuario(idusuario)
                         ##
                     except Exception as erro:
