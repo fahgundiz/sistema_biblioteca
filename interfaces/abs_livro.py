@@ -12,6 +12,7 @@ class Abstrata_Livro(ABC):
         editora (str) 
         ano_publicacao (int) 
         isbn (str)
+        quantidade_disponivel (int)
         """
         pass 
 

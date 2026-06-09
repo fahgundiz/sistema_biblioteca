@@ -1,12 +1,14 @@
 from repositorios.usuario import *
 from repositorios.livro import *
 from repositorios.emprestimo import *
+from .livro_validate import Livro_validate
 from datetime import datetime
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo):
+    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo, livro_validate: Livro_validate):
         self.usuario = usuario
         self.livro = livro
         self.emprestimo = emprestimo
+        self.livro_validate = livro_validate
     #teste
 
     def menu(self):
@@ -75,34 +77,20 @@ class Sistema:
                 case "5":
                     try:
                       titulo = input("Título: ")
-                      if len(titulo) >= 1:
-                          pass
-                      else:
-                          raise ValueError("Erro: Tamanho de título inválido")
+                      Livro_validate.validar_titulo(titulo)
                       autor = input("Autor: ")
-                      if autor.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
-                          raise ValueError("Erro: Valor de autor inváldio")
+                      Livro_validate.validar_autor(autor)
                       editora = input("Editora: ")
-                      if editora.isdigit():#Coloquei isdigit porque utilizei (isalpha) para fazer a validação, porém não estava deixando dar espaço
-                          raise ValueError("Erro: Valor de editora inválido")
+                      Livro_validate.validar_editora(editora)
                       ano_publicacao = int(input("Ano de publicação: "))
-                      if ano_publicacao > 0 and ano_publicacao <= 2026:
-                          pass
-                      else:
-                          raise ValueError("Erro: Ano inválido")
+                      Livro_validate.validar_ano_publicacao(ano_publicacao)
                       isbn = input("ISBN: ")
-                      if len(isbn) >= 10 and isbn.isdigit() and len(isbn) <= 13:
-                          pass
-                      else:
-                          raise ValueError("Erro: Tamanho inválido, digite 13 números")
-                      try:
-                       quantidade_disponivel = int(input("Quantidade disponível: "))
-                      except ValueError:
-                          print("Erro: Quantidade inválida")
+                      Livro_validate.validar_isbn(isbn)
+                      quantidade_disponivel = int(input("Quantidade disponível: "))
+                      Livro_validate.validar_quantidade(quantidade_disponivel)
                       self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
                     except Exception as erro:
                         print(f"Erro: {erro}")
-                        
                 case "6":
                     try:
                         self.livro.listar_livros()
@@ -110,21 +98,20 @@ class Sistema:
                         print(f"Erro: {erro}")
                         
                 case "7":
-                    try:
                         idlivro = int(input("Digite o ID do livro que você deseja atualizar: "))
                         novo_titulo = input("Digite o novo título: ")
+                        Livro_validate.validar_titulo(novo_titulo)
                         novo_autor = input("Digite o novo nome do autor: ")
+                        Livro_validate.validar_autor(novo_autor)
                         nova_editora = input("Digite a nova editora: ")
+                        Livro_validate.validar_editora(nova_editora)
                         novo_ano_de_publicacao = int(input("Digite o novo ano de identificação: "))
-                        novo_isbn = int(input("Digite o novo ISBN: "))
+                        Livro_validate.validar_ano_publicacao(novo_ano_de_publicacao)
+                        novo_isbn = input("Digite o novo ISBN: ")
+                        Livro_validate.validar_isbn(novo_isbn)
                         nova_quantidade_disponivel = int(input("Quantidade disponível:"))
-                        
-                        self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)
-                    except ValueError:
-                        print("Erro: Digite um número válido para o ID e o Ano.")
-                    except Exception as erro:
-                        print(f"Erro inesperado: {erro}")
-                        
+                        Livro_validate.validar_quantidade(nova_quantidade_disponivel)
+                        self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)                 
                 case "8":
                     try:
                         idlivro = int(input("Digite o ID do livro que deseja deletar: "))
@@ -172,6 +159,5 @@ class Sistema:
                 case '0':
                     print("Saindo do programa...")
                     break
-                    
                 case __:
                     print("opção inválida, digite novamente")

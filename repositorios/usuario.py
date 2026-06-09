@@ -5,7 +5,10 @@ class Repositoriosqlusuario(Abstrata_Usuario):
     def __init__(self):
         self.conexao = conectar()
         self.cursor = self.conexao.cursor()
-
+    @staticmethod
+    def validar_email(email):
+       return "@" in email and "." in email
+    
     def criar_usuario(self,nome,email,telefone,cpf):
         sql = """INSERT INTO usuario (nome,email,telefone,cpf)
         VALUES (%s,%s,%s,%s)
