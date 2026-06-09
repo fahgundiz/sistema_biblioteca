@@ -1,6 +1,7 @@
 from repositorios.usuario import *
 from repositorios.livro import *
 from repositorios.emprestimo import *
+from servicos.usuario import *
 from datetime import datetime
 class Sistema:
     def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo):
@@ -34,9 +35,14 @@ class Sistema:
                 case "1":
                     try:
                         nome = input("Digite o nome do usuário: ")
+                        Usuario.validar_nome(nome)
                         email = input("Digite o email: ")
+                        Usuario.validar_email(email)
                         telefone = input("Digite o telefone: ")
+                        Usuario.validar_telefone(telefone)
                         cpf = input("Digite o cpf: ")
+
+                        Usuario(nome, email, telefone, cpf)
                         self.usuario.criar_usuario(nome, email, telefone, cpf)
                     except Exception as erro:
                         print(f"Erro: {erro}")
