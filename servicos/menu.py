@@ -110,20 +110,23 @@ class Sistema:
                         print(f"Erro: {erro}")
                         
                 case "7":
-                        idlivro = int(input("Digite o ID do livro que você deseja atualizar: "))
-                        novo_titulo = input("Digite o novo título: ")
-                        Livro_validate.validar_titulo(novo_titulo)
-                        novo_autor = input("Digite o novo nome do autor: ")
-                        Livro_validate.validar_autor(novo_autor)
-                        nova_editora = input("Digite a nova editora: ")
-                        Livro_validate.validar_editora(nova_editora)
-                        novo_ano_de_publicacao = int(input("Digite o novo ano de identificação: "))
-                        Livro_validate.validar_ano_publicacao(novo_ano_de_publicacao)
-                        novo_isbn = input("Digite o novo ISBN: ")
-                        Livro_validate.validar_isbn(novo_isbn)
-                        nova_quantidade_disponivel = int(input("Quantidade disponível:"))
-                        Livro_validate.validar_quantidade(nova_quantidade_disponivel)
-                        self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)                 
+                        try:
+                            idlivro = int(input("Digite o ID do livro que você deseja atualizar: "))
+                            novo_titulo = input("Digite o novo título: ")
+                            Livro_validate.validar_titulo(novo_titulo)
+                            novo_autor = input("Digite o novo nome do autor: ")
+                            Livro_validate.validar_autor(novo_autor)
+                            nova_editora = input("Digite a nova editora: ")
+                            Livro_validate.validar_editora(nova_editora)
+                            novo_ano_de_publicacao = int(input("Digite o novo ano de identificação: "))
+                            Livro_validate.validar_ano_publicacao(novo_ano_de_publicacao)
+                            novo_isbn = input("Digite o novo ISBN: ")
+                            Livro_validate.validar_isbn(novo_isbn)
+                            nova_quantidade_disponivel = int(input("Quantidade disponível:"))
+                            Livro_validate.validar_quantidade(nova_quantidade_disponivel)
+                            self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)    
+                        except Exception as e:
+                            print(f"Erro: {e}")           
                 case "8":
                     try:
                         idlivro = int(input("Digite o ID do livro que deseja deletar: "))
