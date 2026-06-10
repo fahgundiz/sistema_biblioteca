@@ -164,9 +164,9 @@ class Sistema:
                         print(f"Erro: {erro}")
                         
                 case "11":
-                    try:
+                    # try:
                         
-                    except Exception as erro:
+                    # except Exception as erro:
                         print(f"Erro: {erro}")
                         
                 case '0':
