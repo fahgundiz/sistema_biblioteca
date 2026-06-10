@@ -100,9 +100,9 @@ class Sistema:
                       Livro_validate.validar_ano_publicacao(ano_publicacao)
                       isbn = input("ISBN: ")
                       Livro_validate.validar_isbn(isbn)
-                      quantidade_disponivel = int(input("Quantidade disponível: "))
-                      Livro_validate.validar_quantidade(quantidade_disponivel)
-                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
+                      status = input("Status: ")
+                      Livro_validate.validar_status(status)
+                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,status)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         

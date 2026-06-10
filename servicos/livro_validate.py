@@ -44,11 +44,11 @@ class Livro_validate:
          elif ano_publicacao <= 0:
               raise ValueError("Erro: Ano de publicação inválido")
   
-    def validar_quantidade(quantidade):
+    def validar_status (status):
          """
-         valida se a quantidade está sendo preenchida ou se está com valor negativo
+         valida se o status está sendo preenchida ou se está com valor negativo
          """
-         if not quantidade:
-              raise ValueError("Erro: Quantidade deve ser preenchida")
-         elif quantidade < 0:
+         if not status:
+              raise ValueError("Erro: Status deve ser preenchida")
+         elif status < 0:
               raise ValueError("Erro: O valor não pode ser menor que zero")
