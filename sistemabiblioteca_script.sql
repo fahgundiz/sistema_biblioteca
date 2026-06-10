@@ -4,9 +4,9 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-
 CREATE SCHEMA IF NOT EXISTS `sistema_biblioteca_banco` DEFAULT CHARACTER SET utf8 ;
 USE `sistema_biblioteca_banco` ;
+
 
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
@@ -17,8 +17,9 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario` (
   PRIMARY KEY (`idusuario`),
   UNIQUE INDEX `telefone_UNIQUE` (`telefone` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
-  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) )
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC))
 ENGINE = InnoDB;
+
 
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`livro` (
   `idlivro` INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`livro` (
   `autor` VARCHAR(100) NOT NULL,
   `editora` VARCHAR(100) NOT NULL,
   `ano_publicacao` INT NOT NULL,
-  `quant_disponivel` INT NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idlivro`),
   UNIQUE INDEX `isbn_UNIQUE` (`isbn` ASC),
   UNIQUE INDEX `titulo_UNIQUE` (`titulo` ASC))
@@ -37,8 +38,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario_has_livro` (
   `usuario_idusuario` INT NOT NULL,
   `livro_idlivro` INT NOT NULL,
-  `data_emprestimo` DATE NOT NULL,
-  `data_devolucao` DATE NOT NULL,
   PRIMARY KEY (`usuario_idusuario`, `livro_idlivro`),
   INDEX `fk_usuario_has_livro_livro1_idx` (`livro_idlivro` ASC),
   INDEX `fk_usuario_has_livro_usuario_idx` (`usuario_idusuario` ASC),

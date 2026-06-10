@@ -28,6 +28,7 @@ class Sistema:
             print("9 - Realizar emprestimo livro")
             print("10 - Cancelar emprestimo")
             print("11 - Listar emprestimos")
+            print("12 - fazer devolucao")
             print("0 - Sair")
             
             opcao = input("Escolha uma opção: ").strip()
@@ -167,13 +168,18 @@ class Sistema:
                         
                 case "11":
                     # try:
-                        
                     # except Exception as erro:
                     try:
                         self.emprestimo.listar_emprestimos()
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         ##commit final
+                case "12":
+                    try:
+                      idlivro = int(input("Digite o id do livro: "))
+                      self.livro.aumentar_quantidade_livro(idlivro)
+                    except Exception as e:
+                        print(f"Erro: {e}")
                 case '0':
                     print("Saindo do programa...")
                     break
