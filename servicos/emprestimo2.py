@@ -8,10 +8,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
       self.cursor = self.conexao.cursor()
 
     def criar_emprestimo(self, idusuario, idlivro, data_emprestimo, data_devolucao):
-       """
-       Cria um empréstimo de livro para um usuário.
-       Verifica se o livro possui exemplares disponíveis antes de registrar o empréstimo.
-       """
+      
 
        if idusuario <= 0 or idlivro <= 0:
           print("ID inválido")

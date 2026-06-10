@@ -1,8 +1,3 @@
--- MySQL Workbench Forward Engineering
-
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 CREATE SCHEMA IF NOT EXISTS `sistema_biblioteca_banco` DEFAULT CHARACTER SET utf8 ;
 USE `sistema_biblioteca_banco` ;
@@ -28,12 +23,11 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`livro` (
   `autor` VARCHAR(100) NOT NULL,
   `editora` VARCHAR(100) NOT NULL,
   `ano_publicacao` INT NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` ENUM('disponivel', 'indisponivel') NOT NULL DEFAULT 'disponivel',
   PRIMARY KEY (`idlivro`),
   UNIQUE INDEX `isbn_UNIQUE` (`isbn` ASC),
   UNIQUE INDEX `titulo_UNIQUE` (`titulo` ASC))
 ENGINE = InnoDB;
-
 
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario_has_livro` (
   `usuario_idusuario` INT NOT NULL,
@@ -53,7 +47,3 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario_has_livro` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

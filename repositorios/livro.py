@@ -7,12 +7,12 @@ class Repositoriosqlivro(Abstrata_Livro):
       self.cursor = self.conexao.cursor()
 
 
-    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,quantidade_disponivel):
+    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,status):
 
        sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn,quant_disponivel)
        VALUES (%s,%s,%s,%s,%s,%s)
        """
-       valores = (titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
+       valores = (titulo,autor,editora,ano_publicacao,isbn,status)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
@@ -30,8 +30,8 @@ class Repositoriosqlivro(Abstrata_Livro):
           print("Nenhum livro encontrado")
           return
        else:
-          for idlivro,titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel in livros:
-             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Quantidade disponível: {quantidade_disponivel}\n")
+          for idlivro,titulo,autor,editora,ano_publicacao,isbn,status in livros:
+             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Quantidade disponível: {status}\n")
 
     def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn,nova_quantidade_disponivel):
 
@@ -42,11 +42,11 @@ class Repositoriosqlivro(Abstrata_Livro):
         autor = %s,
         editora = %s,
         ano_publicacao = %s,
-        quant_disponivel = %s
+        status = %s
     WHERE idlivro = %s
     """
        
-      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,nova_quantidade_disponivel,idlivro)
+      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,nova_status,idlivro)
 
       self.cursor.execute(sql,valores)
       self.conexao.commit()
@@ -73,11 +73,3 @@ class Repositoriosqlivro(Abstrata_Livro):
        else:
           print("Livro não encontrado")
 
-    def aumentar_quantidade_livro(self, idlivro):
-       sql = """
-       SELECT quant_disponivel FROM livro WHERE idlivro = %s
-       """
-       valores = idlivro
-       self.cursor.execute(sql,valores)
-       quantidade_disponivel = self.cursor.fetchone()
-       print(f"Quantidade disponivel: {quantidade_disponivel}")
