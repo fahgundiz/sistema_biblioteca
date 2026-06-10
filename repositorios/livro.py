@@ -73,11 +73,3 @@ class Repositoriosqlivro(Abstrata_Livro):
        else:
           print("Livro não encontrado")
 
-    def aumentar_quantidade_livro(self, idlivro):
-       sql = """
-       SELECT quant_disponivel FROM livro WHERE idlivro = %s
-       """
-       valores = idlivro
-       self.cursor.execute(sql,valores)
-       quantidade_disponivel = self.cursor.fetchone()
-       print(f"Quantidade disponivel: {quantidade_disponivel}")
