@@ -17,6 +17,8 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
 
        print(f"Empréstimo criado com sucesso")
 
+       
+
     def listar_emprestimos(self):
        sql = "SELECT usuario_idusuario, livro_idlivro, data_emprestimo, data_devolucao FROM usuario_has_livro"
 
