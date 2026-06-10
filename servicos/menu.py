@@ -29,7 +29,6 @@ class Sistema:
             print("9 - Realizar emprestimo livro")
             print("10 - Cancelar emprestimo")
             print("11 - Listar emprestimos")
-            print("12 - fazer devolucao")
             print("0 - Sair")
             
             opcao = input("Escolha uma opção: ").strip()
@@ -100,9 +99,7 @@ class Sistema:
                       Livro_validate.validar_ano_publicacao(ano_publicacao)
                       isbn = input("ISBN: ")
                       Livro_validate.validar_isbn(isbn)
-                      status = input("Status: ")
-                      Livro_validate.validar_status(status)
-                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,status)
+                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
@@ -125,8 +122,6 @@ class Sistema:
                             Livro_validate.validar_ano_publicacao(novo_ano_de_publicacao)
                             novo_isbn = input("Digite o novo ISBN: ")
                             Livro_validate.validar_isbn(novo_isbn)
-                            nova_quantidade_disponivel = int(input("Quantidade disponível:"))
-                            Livro_validate.validar_quantidade(nova_quantidade_disponivel)
                             self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)    
                         except Exception as e:
                             print(f"Erro: {e}")           
