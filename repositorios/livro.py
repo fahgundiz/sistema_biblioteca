@@ -7,7 +7,7 @@ class Repositoriosqlivro(Abstrata_Livro):
       self.cursor = self.conexao.cursor()
 
 
-    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,quantidade_disponivel):
+    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,status):
        """
        Efetua a criação do livro, dentro do banco de dados, conforme os
        dados passados para o livro
@@ -15,10 +15,10 @@ class Repositoriosqlivro(Abstrata_Livro):
        valores -> pega os valores passados para os parametros e adiciona junto aos valores do sql
        por final, efetua um commit, permitindo a inserção dos dados dentro da tabela.
        """
-       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn,quant_disponivel)
+       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn,status)
        VALUES (%s,%s,%s,%s,%s,%s)
        """
-       valores = (titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
+       valores = (titulo,autor,editora,ano_publicacao,isbn,status)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
@@ -31,7 +31,7 @@ class Repositoriosqlivro(Abstrata_Livro):
        sql -> comando que irá ser utilizado para selecionar os livros, conforme os dados inseridos
        por final os livros são listados utilizando um loop for, para pegar cada dado do livro e lista-los
        """
-       sql = "SELECT  idlivro,autor,titulo,editora,ano_publicacao,isbn,quant_disponivel FROM livro"
+       sql = "SELECT  idlivro,autor,titulo,editora,ano_publicacao,isbn,status FROM livro"
 
        self.cursor.execute(sql)
        livros = self.cursor.fetchall()
@@ -40,10 +40,10 @@ class Repositoriosqlivro(Abstrata_Livro):
           print("Nenhum livro encontrado")
           return
        else:
-          for idlivro,titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel in livros:
-             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Quantidade disponível: {quantidade_disponivel}\n")
+          for idlivro,titulo,autor,editora,ano_publicacao,isbn,status in livros:
+             print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Quantidade disponível: {status}\n")
 
-    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn,nova_quantidade_disponivel):
+    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn,nova_status):
       """
       Faz a atualização de um livro
       utilizando seu ID para rastrear o livro que pretende ser atualizado
@@ -56,11 +56,11 @@ class Repositoriosqlivro(Abstrata_Livro):
         autor = %s,
         editora = %s,
         ano_publicacao = %s,
-        quant_disponivel = %s
+        status = %s
     WHERE idlivro = %s
     """
        
-      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,nova_quantidade_disponivel,idlivro)
+      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,nova_status,idlivro)
 
       self.cursor.execute(sql,valores)
       self.conexao.commit()
