@@ -9,10 +9,11 @@ class Repositoriosqlivro(Abstrata_Livro):
 
     def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,status):
 
-       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn)
+       sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn,status)
        VALUES (%s,%s,%s,%s,%s,%s)
        """
-       valores = (titulo,autor,editora,ano_publicacao,isbn, status)
+
+       valores = (titulo,autor,editora,ano_publicacao,isbn,status)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
