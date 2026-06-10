@@ -4,6 +4,7 @@ from repositorios.emprestimo import *
 from .livro_validate import Livro_validate
 from servicos.usuario import *
 from datetime import datetime
+
 class Sistema:
     def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo, livro_validate: Livro_validate):
         self.usuario = usuario
@@ -99,11 +100,12 @@ class Sistema:
                       Livro_validate.validar_ano_publicacao(ano_publicacao)
                       isbn = input("ISBN: ")
                       Livro_validate.validar_isbn(isbn)
-                      quantidade_disponivel = int(input("Quantidade disponível: "))
-                      Livro_validate.validar_quantidade(quantidade_disponivel)
-                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,quantidade_disponivel)
+                      status = input("Status: ")
+                      Livro_validate.validar_status(status)
+                      self.livro.criar_livro(titulo,autor,editora,ano_publicacao,isbn,status)
                     except Exception as erro:
                         print(f"Erro: {erro}")
+                        
                 case "6":
                     try:
                         self.livro.listar_livros()
@@ -128,6 +130,7 @@ class Sistema:
                             self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)    
                         except Exception as e:
                             print(f"Erro: {e}")           
+                            
                 case "8":
                     try:
                         idlivro = int(input("Digite o ID do livro que deseja deletar: "))
@@ -145,14 +148,14 @@ class Sistema:
                         data_emprestimo_str = input("Digite a data de emprestimo(YYYY-MM-DD): ")
                         data_devolucao_str = input("Digite a data de devolução(YYYY-MM-DD): ")
 
-                        #Converter string para date time
+                        #
                         data_emprestimo = datetime.strptime(data_emprestimo_str, "%Y-%m-%d")
                         data_devolucao = datetime.strptime(data_devolucao_str, "%Y-%m-%d")
 
-                        #Bota apenas a data (tira a hora)
+                        
                         data_emprestimo_date = data_emprestimo.date()
                         data_devolucao_date = data_devolucao.date()
-                        #tentativa push
+                        
                         self.emprestimo.criar_emprestimo(idusuario, idlivro, data_emprestimo_date, data_devolucao_date)
                     except Exception as erro:
                         print(f"Erro: {erro}")
@@ -161,8 +164,8 @@ class Sistema:
                     try:
                         id_livro = int(input("ID do livro: "))
                         id_usuario = int(input("ID do usuário: "))
-                        self.emprestimo.cancelar_emprestimo(id_livro,id_usuario)
-                        print("Emprestimo cancelado")
+                        self.emprestimo.cancelar_emprestimo(id_livro, id_usuario)
+                        print("Empréstimo cancelado com sucesso!")
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
@@ -183,5 +186,5 @@ class Sistema:
                 case '0':
                     print("Saindo do programa...")
                     break
-                case __:
-                    print("opção inválida, digite novamente")
+                case _:
+                    print("Opção inválida! Tente novamente.")
