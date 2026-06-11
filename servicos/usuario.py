@@ -55,7 +55,7 @@ class Usuario:
             raise ValueError("Digite um telefone válido")
     
     @staticmethod
-    def validar_tipo_perfil(self, perfil):
+    def validar_tipo_perfil(perfil):
         """
         Método estático para validar um tipo de perfil
         Retorna Verdadeiro caso o tipo de perfil seja administrador, funcionario ou cliente
