@@ -45,10 +45,7 @@ class Livro_validate:
               raise ValueError("Erro: Ano de publicação inválido")
   
     def validar_status (status):
-         """
-         valida se o status está sendo preenchida ou se está com valor negativo
-         """
-         if not status:
-              raise ValueError("Erro: Status deve ser preenchida")
-         elif status < 0:
-              raise ValueError("Erro: O valor não pode ser menor que zero")
+       if status == "disponivel" or status == "indisponivel":
+            pass
+       else:
+            raise ValueError("Erro: Valor de status inválido")
