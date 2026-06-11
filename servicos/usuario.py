@@ -7,11 +7,12 @@ class Usuario:
     telefone (string)
     cpf (string)
     """
-    def __init__(self, nome:str, email:str, telefone:str, cpf:str):
+    def __init__(self, nome:str, email:str, telefone:str, cpf:str, perfil:str):
         self.nome = nome
         self.email = email
         self.telefone = telefone
         self.cpf = cpf
+        self.perfil = perfil
     
     @staticmethod
     def validar_nome(nome:str):
@@ -52,19 +53,6 @@ class Usuario:
             return True
         else:
             raise ValueError("Digite um telefone válido")
-    
-    @staticmethod
-    def validar_idusuario(idusuario):
-        """
-        Método estático para validar o ID do usuário
-        Garante que o o ID seja um número inteiro
-        Exemplo válido: 1, 2 ou 3
-        Exemplo falso: gabriel, 10.5 , False, True      
-        """
-        if isinstance(idusuario, int) and not isinstance(idusuario, bool):
-            return True
-        else:
-            raise ValueError("Digite um ID válido")
     
     @property
     def cpf(self)-> str:

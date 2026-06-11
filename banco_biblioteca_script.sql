@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario` (
   `email` VARCHAR(255) NOT NULL,
   `telefone` VARCHAR(20) NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
+  `perfil` ENUM('administrador', 'funcionario', 'cliente'),
   PRIMARY KEY (`idusuario`),
   UNIQUE INDEX `telefone_UNIQUE` (`telefone` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
