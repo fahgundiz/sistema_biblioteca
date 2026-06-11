@@ -7,12 +7,13 @@ class Repositoriosqlivro(Abstrata_Livro):
       self.cursor = self.conexao.cursor()
 
 
-    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn,status):
+    def criar_livro(self, titulo, autor, editora, ano_publicacao, isbn):
 
        sql = """INSERT INTO livro (titulo,autor,editora,ano_publicacao,isbn)
-       VALUES (%s,%s,%s,%s,%s,%s)
+       VALUES (%s,%s,%s,%s,%s)
        """
-       valores = (titulo,autor,editora,ano_publicacao,isbn, status)
+
+       valores = (titulo,autor,editora,ano_publicacao,isbn)
 
        self.cursor.execute(sql,valores)
        self.conexao.commit()
@@ -33,7 +34,7 @@ class Repositoriosqlivro(Abstrata_Livro):
           for idlivro,titulo,autor,editora,ano_publicacao,isbn,status in livros:
              print(f"ID: {idlivro}, titulo: {titulo}, autor: {autor}, editora: {editora}, ano de publicação: {ano_publicacao}, isbn: {isbn}, Status: {status}\n")
 
-    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn, status):
+    def atualizar_livro(self, idlivro, novo_titulo, novo_autor, nova_editora, novo_ano_publicacao, novo_isbn, novo_status):
 
       sql = """
     UPDATE livro 
@@ -46,7 +47,7 @@ class Repositoriosqlivro(Abstrata_Livro):
     WHERE idlivro = %s
     """
        
-      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,status,idlivro)
+      valores = (novo_isbn,novo_titulo,novo_autor,nova_editora,novo_ano_publicacao,novo_status,idlivro)
 
       self.cursor.execute(sql,valores)
       self.conexao.commit()
@@ -73,3 +74,15 @@ class Repositoriosqlivro(Abstrata_Livro):
        else:
           print("Livro não encontrado")
 
+    def pegar_status(self,idlivro):
+       sql = "SELECT status FROM livro WHERE idlivro = %s"
+
+       valor = (idlivro,)
+
+       self.cursor.execute(sql,valor)
+
+       pega_status = self.cursor.fetchone()
+       status = True
+       if pega_status[0] == "indisponivel":
+          status = False
+       print(status)

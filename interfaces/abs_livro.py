@@ -47,7 +47,11 @@ class Abstrata_Livro(ABC):
         """
         pass
     @abstractmethod
-    def aumentar_quantidade_livro(self,idlivro,quant_disponivel):
+    def pegar_status(self,idlivro):
         """
+        Metódo que pegar e retorna o valor do status de um livro
+        caso for disponivel -> True
+        caso for indisponivel -> False
+        idlivro (int)
         """
         pass
