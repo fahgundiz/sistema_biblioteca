@@ -6,6 +6,7 @@ class Abstrata_Emprestimo(ABC):
     def criar_emprestimo(self, idusuario, idlivro, data_emprestimo, data_devolucao):
         """
         Método abstrato para criar um empréstimo de livro, altera o status do livro para indisponível 
+        Somente cria o empréstimo se o livro possuir status = disponivel.
         Parâmetros: 
         idusuario (int)
         idlivro(int)
