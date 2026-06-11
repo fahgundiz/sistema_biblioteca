@@ -74,3 +74,15 @@ class Repositoriosqlivro(Abstrata_Livro):
        else:
           print("Livro não encontrado")
 
+    def pegar_status(self,idlivro):
+       sql = "SELECT status FROM livro WHERE idlivro = %s"
+
+       valor = (idlivro,)
+
+       self.cursor.execute(sql,valor)
+
+       pega_status = self.cursor.fetchone()
+       status = True
+       if pega_status[0] == "indisponivel":
+          status = False
+       print(status)

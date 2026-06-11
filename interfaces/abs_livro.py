@@ -46,3 +46,12 @@ class Abstrata_Livro(ABC):
         isbn (str)
         """
         pass
+    @abstractmethod
+    def pegar_status(self,idlivro):
+        """
+        Metódo que pegar e retorna o valor do status de um livro
+        caso for disponivel -> True
+        caso for indisponivel -> False
+        idlivro (int)
+        """
+        pass

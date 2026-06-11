@@ -49,3 +49,4 @@ class Livro_validate:
             pass
        else:
             raise ValueError("Erro: Valor de status inválido")
+
