@@ -46,8 +46,3 @@ class Abstrata_Livro(ABC):
         isbn (str)
         """
         pass
-    @abstractmethod
-    def aumentar_quantidade_livro(self,idlivro,quant_disponivel):
-        """
-        """
-        pass
