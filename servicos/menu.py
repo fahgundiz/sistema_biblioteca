@@ -122,7 +122,7 @@ class Sistema:
                             Livro_validate.validar_ano_publicacao(novo_ano_de_publicacao)
                             novo_isbn = input("Digite o novo ISBN: ")
                             Livro_validate.validar_isbn(novo_isbn)
-                            self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn, nova_quantidade_disponivel)    
+                            self.livro.atualizar_livro(idlivro, novo_titulo, novo_autor,nova_editora, novo_ano_de_publicacao, novo_isbn)    
                         except Exception as e:
                             print(f"Erro: {e}")           
                             
