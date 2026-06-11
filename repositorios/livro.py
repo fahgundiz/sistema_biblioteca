@@ -85,4 +85,4 @@ class Repositoriosqlivro(Abstrata_Livro):
        status = True
        if pega_status[0] == "indisponivel":
           status = False
-       print(status)
+       return status

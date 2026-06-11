@@ -142,6 +142,11 @@ class Sistema:
                     try:
                         idusuario = int(input("Digite o ID do usuário: "))
                         idlivro = int(input("Digite o ID do livro: "))
+
+                        if not self.livro.pegar_status(idlivro):
+                            print("Erro: este livro está indisponível")
+                            return
+                        
                         data_emprestimo_str = input("Digite a data de emprestimo(YYYY-MM-DD): ")
                         data_devolucao_str = input("Digite a data de devolução(YYYY-MM-DD): ")
 

@@ -32,6 +32,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sistema_biblioteca_banco`.`usuario_has_livro` (
   `usuario_idusuario` INT NOT NULL,
   `livro_idlivro` INT NOT NULL,
+  `data_emprestimo` DATE NOT NULL,
+  `data_devolucao` DATE NOT NULL,
   PRIMARY KEY (`usuario_idusuario`, `livro_idlivro`),
   INDEX `fk_usuario_has_livro_livro1_idx` (`livro_idlivro` ASC),
   INDEX `fk_usuario_has_livro_usuario_idx` (`usuario_idusuario` ASC),
