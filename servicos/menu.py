@@ -1,8 +1,8 @@
-from repositorios.usuario import *
-from repositorios.livro import *
-from repositorios.emprestimo import *
-from .livro_validate import Livro_validate
-from servicos.usuario import *
+from repositorios.repo_usuario import *
+from repositorios.repo_livro import *
+from repositorios.repo_emprestimo import *
+from .validacao_livro import Livro_validate
+from servicos.validacao_usuario import *
 from datetime import datetime
 
 class Sistema:

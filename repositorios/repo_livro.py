@@ -1,5 +1,5 @@
 from configuracoes.database import conectar
-from interfaces.abs_livro import Abstrata_Livro
+from interfaces.abstrata_livro import Abstrata_Livro
 
 class Repositoriosqlivro(Abstrata_Livro):
     def __init__(self):
