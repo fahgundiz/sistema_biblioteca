@@ -2,6 +2,7 @@
 from configuracoes.database import conectar
 from interfaces.abstrata_emprestimo import Abstrata_Emprestimo
 
+
 class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
     def __init__(self):
       self.conexao = conectar()
@@ -19,7 +20,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           return
 
        self.cursor.execute(
-          "SELECT status_disponivel FROM livro WHERE idlivro = %s",
+          "SELECT status FROM livro WHERE idlivro = %s",
           (idlivro,)
        )
 
@@ -29,9 +30,6 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           print("Livro não encontrado")
           return
 
-       if livro[0] <= 0:
-          print("Livro sem status disponível")
-          return
 
        sql = """
        INSERT INTO usuario_has_livro
@@ -52,6 +50,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
        self.conexao.commit()
 
        print("Empréstimo criado com sucesso")
+
 
     def listar_emprestimos(self):
        """

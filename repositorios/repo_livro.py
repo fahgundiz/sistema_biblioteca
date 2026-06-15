@@ -86,3 +86,42 @@ class Repositoriosqlivro(Abstrata_Livro):
        if pega_status[0] == "indisponivel":
           status = False
        return status
+    
+    def alterar_status(self,idlivro):
+      sql = """
+      SELECT status FROM livro WHERE idlivro = %s
+       """
+      
+      val = (idlivro,)
+      self.cursor.execute(sql,val)
+      statuss = self.cursor.fetchone()
+      print(f"Status: {statuss[0]}")
+
+      if statuss[0] == "disponivel":
+       status = "indisponivel"
+       sql = """
+     UPDATE livro 
+     SET status = %s
+     WHERE idlivro = %s
+     """
+       valor = (status,idlivro)
+       self.cursor.execute(sql,valor)
+       self.conexao.commit()
+
+      elif statuss[0] == "indisponivel":
+       status = "disponivel"
+       sql = """
+     UPDATE livro 
+     SET status = %s
+     WHERE idlivro = %s
+     """
+       valor = (status,idlivro)
+       self.cursor.execute(sql,valor)
+       self.conexao.commit()
+
+
+# def main():
+#  Repositoriosqlivro.alterar_status()
+
+# if __name__ == "__main__":
+#    main()

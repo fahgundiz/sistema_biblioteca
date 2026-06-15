@@ -4,11 +4,13 @@ from repositorios.repo_emprestimo import *
 from .validacao_livro import Livro_validate
 from servicos.validacao_usuario import *
 from datetime import datetime
+from repositorios.repo_livro import Repositoriosqlivro
 
 class Sistema:
-    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo, livro_validate: Livro_validate):
+    def __init__(self, usuario:Repositoriosqlusuario, livro:Repositoriosqlivro, emprestimo:RepositoriosqlEmprestimo, livro_validate: Livro_validate,repositorio_livro: Repositoriosqlivro):
         self.usuario = usuario
         self.livro = livro
+        self.repo_livro = repositorio_livro
         self.emprestimo = emprestimo
         self.livro_validate = livro_validate
                                                     
@@ -67,11 +69,8 @@ class Sistema:
                         novo_telefone = input("Digite o novo telefone: ")
                         Usuario.validar_telefone(novo_telefone)
                         novo_cpf = input("Digite o novo cpf: ")
-<<<<<<< HEAD
-=======
                         novo_perfil = input("Digite o novo perfil: ")
                         Usuario.validar_tipo_perfil(novo_perfil)
->>>>>>> 293a0b6511a48d3b83310050de0645b0571842ae
                         Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
 
                         self.usuario.atualizar_usuario(idusuario, 
@@ -146,7 +145,7 @@ class Sistema:
                     try:
                         idusuario = int(input("Digite o ID do usuário: "))
                         idlivro = int(input("Digite o ID do livro: "))
-
+                        
                         if not self.livro.pegar_status(idlivro):
                             print("Erro: este livro está indisponível")
                             return
@@ -161,16 +160,18 @@ class Sistema:
                         
                         data_emprestimo_date = data_emprestimo.date()
                         data_devolucao_date = data_devolucao.date()
-                        
                         self.emprestimo.criar_emprestimo(idusuario, idlivro, data_emprestimo_date, data_devolucao_date)
-                    except Exception as erro:
-                        print(f"Erro: {erro}")
+                        self.repo_livro.alterar_status(idlivro)
+                  
+                    except Exception as e:
+                        print(f"Erro {e}")
                         
                 case "10":
                     try:
                         id_livro = int(input("ID do livro: "))
                         id_usuario = int(input("ID do usuário: "))
                         self.emprestimo.cancelar_emprestimo(id_livro, id_usuario)
+                        self.repo_livro.alterar_status(id_livro)
                         print("Empréstimo cancelado com sucesso!")
                     except Exception as erro:
                         print(f"Erro: {erro}")
@@ -198,3 +199,4 @@ class Sistema:
                     break
                 case _:
                     print("Opção inválida! Tente novamente.")
+                        
