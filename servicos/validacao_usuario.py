@@ -54,6 +54,21 @@ class Usuario:
         else:
             raise ValueError("Digite um telefone válido")
     
+    @staticmethod
+    def validar_tipo_perfil(perfil):
+        """
+        Método estático para validar um tipo de perfil
+        Retorna Verdadeiro caso o tipo de perfil seja administrador, funcionario ou cliente
+        Exemplo válido: administrador, funcionario ou cliente.
+        Exemplo falso: admin, user, func
+        """
+        perfis_validos = ['administrador', 'funcionario', 'cliente']
+        
+        if perfil in perfis_validos:
+            return True
+        else:
+            return False
+    
     @property
     def cpf(self)-> str:
         """

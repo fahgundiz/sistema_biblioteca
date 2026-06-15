@@ -1,8 +1,8 @@
-from repositorios.usuario import *
-from repositorios.livro import *
-from repositorios.emprestimo import *
-from .livro_validate import Livro_validate
-from servicos.usuario import *
+from repositorios.repo_usuario import *
+from repositorios.repo_livro import *
+from repositorios.repo_emprestimo import *
+from .validacao_livro import Livro_validate
+from servicos.validacao_usuario import *
 from datetime import datetime
 
 class Sistema:
@@ -44,9 +44,10 @@ class Sistema:
                         telefone = input("Digite o telefone: ")
                         Usuario.validar_telefone(telefone)
                         cpf = input("Digite o cpf: ")
-
-                        Usuario(nome, email, telefone, cpf)
-                        self.usuario.criar_usuario(nome, email, telefone, cpf)
+                        perfil = input("Digite o perfil do usuário: ")
+                        Usuario.validar_tipo_perfil(perfil)
+                        Usuario(nome, email, telefone, cpf, perfil)
+                        self.usuario.criar_usuario(nome, email, telefone, cpf, perfil)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
@@ -59,7 +60,6 @@ class Sistema:
                 case "3":
                     try:
                         idusuario = int(input("Digite o ID do usuário para atualizar: "))
-                        Usuario.validar_idusuario(idusuario)
                         novo_nome = input("Digite o novo nome: ")
                         Usuario.validar_nome(novo_nome)
                         novo_email = input("Digite o novo e-mail: ")
@@ -67,20 +67,25 @@ class Sistema:
                         novo_telefone = input("Digite o novo telefone: ")
                         Usuario.validar_telefone(novo_telefone)
                         novo_cpf = input("Digite o novo cpf: ")
+<<<<<<< HEAD
+=======
+                        novo_perfil = input("Digite o novo perfil: ")
+                        Usuario.validar_tipo_perfil(novo_perfil)
+>>>>>>> 293a0b6511a48d3b83310050de0645b0571842ae
                         Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
 
                         self.usuario.atualizar_usuario(idusuario, 
                            novo_nome,
                            novo_email, 
                            novo_telefone, 
-                           novo_cpf)
+                           novo_cpf,
+                           novo_perfil)
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         
                 case "4":
                     try:
                         idusuario = int(input("Digite o ID do usuário para deletar: "))
-                        Usuario.validar_idusuario(idusuario)
                         self.usuario.deletar_usuario(idusuario)
                         ##
                     except Exception as erro:
