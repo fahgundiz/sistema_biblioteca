@@ -19,7 +19,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           return
 
        self.cursor.execute(
-          "SELECT quant_disponivel FROM livro WHERE idlivro = %s",
+          "SELECT status_disponivel FROM livro WHERE idlivro = %s",
           (idlivro,)
        )
 
@@ -30,7 +30,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           return
 
        if livro[0] <= 0:
-          print("Livro sem quantidade disponível")
+          print("Livro sem status disponível")
           return
 
        sql = """
@@ -45,7 +45,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
 
        self.cursor.execute("""
        UPDATE livro
-       SET quant_disponivel = quant_disponivel - 1
+       SET status = status
        WHERE idlivro = %s
        """, (idlivro,))
 
@@ -129,7 +129,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
     def cancelar_emprestimo(self, idusuario, idlivro):
         """
         Remove um empréstimo do sistema.
-        Também devolve a quantidade do livro ao estoque.
+        Também devolve o status do livro ao estoque.
         """
 
         sql = """
@@ -144,7 +144,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
 
         self.cursor.execute("""
         UPDATE livro
-        SET quant_disponivel = quant_disponivel + 1
+        SET status = status
         WHERE idlivro = %s
         """, (idlivro,))
 
@@ -158,7 +158,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
     def fazer_devolucao(self, idusuario, idlivro):
        """
        Registra a devolução de um livro.
-       Atualiza a quantidade disponível do livro.
+       Atualiza o status do livro.
        """
 
        sql = """
@@ -173,7 +173,7 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
 
        self.cursor.execute("""
        UPDATE livro
-       SET quant_disponivel = quant_disponivel + 1
+       SET status = status
        WHERE idlivro = %s
        """, (idlivro,))
 

@@ -11,8 +11,8 @@ class Sistema:
         self.livro = livro
         self.emprestimo = emprestimo
         self.livro_validate = livro_validate
-    #teste
-
+                                                    
+                                                    #utilizar o metodo de pegar perfil e permitir que cada perfil faça suas funcionalidades especificas
     def menu(self):
         while True:
             print("="*50)
@@ -26,12 +26,12 @@ class Sistema:
             print("6 - Listar livros")
             print("7 - Atualizar livro")
             print("8 - Deletar livro")
-            print("9 - Realizar emprestimo livro")
-            print("10 - Cancelar emprestimo")
-            print("11 - Listar emprestimos")
+            print("9 - Realizar empréstimo livro")
+            print("10 - Cancelar empréstimo")
+            print("11 - Listar empréstimos")
             print("0 - Sair")
             
-            opcao = input("Escolha uma opção: ").strip()
+            opcao = input("Escolha uma opção:").strip()
             print("="*50)
             
             match opcao:
@@ -67,7 +67,6 @@ class Sistema:
                         novo_telefone = input("Digite o novo telefone: ")
                         Usuario.validar_telefone(novo_telefone)
                         novo_cpf = input("Digite o novo cpf: ")
-
                         Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
 
                         self.usuario.atualizar_usuario(idusuario, 
@@ -172,8 +171,10 @@ class Sistema:
                         print(f"Erro: {erro}")
                         
                 case "11":
-                    # try:
-                    # except Exception as erro:
+                    #try:
+                    
+                    #except Exception as erro:
+                    
                     try:
                         self.emprestimo.listar_emprestimos()
                     except Exception as erro:
@@ -185,6 +186,8 @@ class Sistema:
                       self.livro.aumentar_quantidade_livro(idlivro)
                     except Exception as e:
                         print(f"Erro: {e}")
+            
+
                 case '0':
                     print("Saindo do programa...")
                     break
