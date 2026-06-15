@@ -67,11 +67,8 @@ class Sistema:
                         novo_telefone = input("Digite o novo telefone: ")
                         Usuario.validar_telefone(novo_telefone)
                         novo_cpf = input("Digite o novo cpf: ")
-<<<<<<< HEAD
-=======
                         novo_perfil = input("Digite o novo perfil: ")
                         Usuario.validar_tipo_perfil(novo_perfil)
->>>>>>> 293a0b6511a48d3b83310050de0645b0571842ae
                         Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
 
                         self.usuario.atualizar_usuario(idusuario, 

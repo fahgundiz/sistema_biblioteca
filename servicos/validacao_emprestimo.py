@@ -18,10 +18,10 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           print("As datas devem ser informadas")
           return
 
-       self.cursor.execute(
-          "SELECT status_disponivel FROM livro WHERE idlivro = %s",
-          (idlivro,)
-       )
+       self.cursor.execute("SELECT status FROM livro WHERE idlivro = %s", (
+       
+       idlivro,))
+
 
        livro = self.cursor.fetchone()
 
@@ -30,7 +30,6 @@ class RepositoriosqlEmprestimo(Abstrata_Emprestimo):
           return
 
        if livro[0] <= 0:
-          print("Livro sem status disponível")
           return
 
        sql = """
