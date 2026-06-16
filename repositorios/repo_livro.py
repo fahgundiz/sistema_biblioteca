@@ -103,7 +103,6 @@ class Repositoriosqlivro(Abstrata_Livro):
       logo em seguida utilizamos o comando de update para efetuar a alteracao do status do livro
       se estiver disponivel, muda para indisponivel, ou vece-versa.
       """
-      
       sql = """
       SELECT status FROM livro WHERE idlivro = %s
        """
