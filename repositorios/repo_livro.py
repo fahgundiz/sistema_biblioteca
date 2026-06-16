@@ -75,6 +75,14 @@ class Repositoriosqlivro(Abstrata_Livro):
           print("Livro não encontrado")
 
     def pegar_status(self,idlivro):
+       """
+       pega o status do livro pelo id, usando o comando sql através da variavel sql
+       armazena o id do livro em valor
+       rota a variavel sql com o id do livro
+       armazena o status na variavel pega_status
+       se estiver disponivel, retorna True, caso contrario, retorna False
+       """
+
        sql = "SELECT status FROM livro WHERE idlivro = %s"
 
        valor = (idlivro,)
@@ -88,16 +96,23 @@ class Repositoriosqlivro(Abstrata_Livro):
        return status
     
     def alterar_status(self,idlivro):
+      """
+      Funcao alterar_status, sempre que for chamada, irá alterar o valor do status do livro
+      seleciona o status do livro conforme seu id
+      adicionamos o status na variavel status_atual
+      logo em seguida utilizamos o comando de update para efetuar a alteracao do status do livro
+      se estiver disponivel, muda para indisponivel, ou vece-versa.
+      """
       sql = """
       SELECT status FROM livro WHERE idlivro = %s
        """
       
       val = (idlivro,)
       self.cursor.execute(sql,val)
-      statuss = self.cursor.fetchone()
-      print(f"Status: {statuss[0]}")
+      status_atual = self.cursor.fetchone()
+      print(f"Status: {status_atual[0]}")
 
-      if statuss[0] == "disponivel":
+      if status_atual[0] == "disponivel":
        status = "indisponivel"
        sql = """
      UPDATE livro 
@@ -108,7 +123,7 @@ class Repositoriosqlivro(Abstrata_Livro):
        self.cursor.execute(sql,valor)
        self.conexao.commit()
 
-      elif statuss[0] == "indisponivel":
+      elif status_atual[0] == "indisponivel":
        status = "disponivel"
        sql = """
      UPDATE livro 
