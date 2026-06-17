@@ -110,7 +110,7 @@ class Repositoriosqlivro(Abstrata_Livro):
       val = (idlivro,)
       self.cursor.execute(sql,val)
       status_atual = self.cursor.fetchone()
-      print(f"Status: {status_atual[0]}")
+   
 
       if status_atual[0] == "disponivel":
        status = "indisponivel"

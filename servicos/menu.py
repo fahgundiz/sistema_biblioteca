@@ -71,7 +71,7 @@ class Sistema:
                         novo_cpf = input("Digite o novo cpf: ")
                         novo_perfil = input("Digite o novo perfil: ")
                         Usuario.validar_tipo_perfil(novo_perfil)
-                        Usuario(novo_nome, novo_email, novo_telefone, novo_cpf)
+                        Usuario(novo_nome, novo_email, novo_telefone, novo_cpf, novo_perfil)
 
                         self.usuario.atualizar_usuario(idusuario, 
                            novo_nome,
@@ -172,7 +172,6 @@ class Sistema:
                         id_usuario = int(input("ID do usuário: "))
                         self.emprestimo.cancelar_emprestimo(id_livro, id_usuario)
                         self.repo_livro.alterar_status(id_livro)
-                        print("Empréstimo cancelado com sucesso!")
                     except Exception as erro:
                         print(f"Erro: {erro}")
                         

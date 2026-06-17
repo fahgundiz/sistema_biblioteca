@@ -47,7 +47,7 @@ class Repositoriosqlusuario(Abstrata_Usuario):
            email = %s,
            telefone = %s,
            cpf = %s,
-           perfil = %s,
+           perfil = %s
        WHERE idusuario = %s
        """
 ##teste02
